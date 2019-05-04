@@ -1,0 +1,41 @@
+server:
+ port: ${SURVEY_REST_GATEWAY_PORT}
+
+spring:
+ application:
+  name: survey-rest-gateway   
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${SURVEY_EUREKA_SERVER_IP}:${SURVEY_EUREKA_SERVER_PORT}/eureka/
+
+ 
+
+zuul:
+  sensitiveHeaders:
+  host:
+   socket-timeout-millis: 30000
+   connect-timeout-millis: 30000
+  routes:
+    definition:
+      path: /suvey-administration/**
+      serviceId: SURVEY-DEFINITION-SERVICE
+    surveyee:
+      path: /surveyee/**
+      serviceId: SURVEY-SURVEYEE-SERVICE
+      
+       
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+         enabled: false
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+
+ribbon:
+  ConnectTimeout:  10000
+  ReadTimeout:  10000
+        
