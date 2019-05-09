@@ -15,6 +15,7 @@ survey eureka-server should be up and run<br/>
 The following environment variables should be added
 
 # SURVEY_EUREKA_SERVER_IP = 127.0.0.1
+# SURVEY_EUREKA_SERVER_PORT = 8761
 
 # SURVEY_REST_GATEWAY_PORT = 8080
 
